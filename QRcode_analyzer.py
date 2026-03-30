@@ -8,14 +8,14 @@ import sys
 # important
 def check_non_empty_input(user_input, field_name):
     if not user_input:
-        print(f"❌ Error: {field_name} cannot be empty.")
+        print(f"Error: {field_name} cannot be empty. ❌")
         return False
     return True
 
 
 def check_file_exists(path):
     if not os.path.exists(path):
-        print("❌ Error: File does not exist.")
+        print("Error: File does not exist. ❌")
         return False
     return True
 
@@ -23,7 +23,7 @@ def check_file_exists(path):
 # QR generator
 
 def generate_qr_code():
-    print("📌 QR CODE GENERATION ")
+    print("QR CODE GENERATION 📌")
 
     URL = input("Enter a URL to generate QR code: ").strip()
     if not check_non_empty_input(URL, "URL"):
@@ -53,13 +53,13 @@ def generate_qr_code():
         print(f"📁 Saved as: {file_path}")
 
     except Exception as e:
-        print(f"❌ Unexpected error during QR generation: {e}")
+        print(f"Unexpected error during QR generation: {e} 🤔")
 
 
 # QR scanner
 
 def scan_qr():
-    print("📌 QR CODE SCANNING MODULE")
+    print("QR CODE SCANNING MODULE 📌")
 
     path = input("Enter QR image path: ").strip()
     if not check_non_empty_input(path, "File path"):
@@ -72,13 +72,13 @@ def scan_qr():
         img = cv2.imread(path)
 
         if img is None:
-            print("❌ Error: Unable to read image file.")
+            print("Error: Unable to read image file. ❌")
             return
 
         decoded_objects = decode(img)
 
         if not decoded_objects:
-            print("❌ No QR code detected in the image.")
+            print("No QR code detected in the image. ❌")
             return
 
         print("\n🔍 QR Code(s) Detected:", len(decoded_objects))
@@ -89,7 +89,7 @@ def scan_qr():
             analyze_data(data)
 
     except Exception as e:
-        print(f"❌ Error during scanning: {e}")
+        print(f"Error during scanning: {e} 🤔")
 
 
 # Analysis
@@ -97,7 +97,7 @@ def analyze_data(data):
     data_lower = data.lower()
 
     if data.startswith("http" or "https"):
-        print("📌 Type Detected: URL")
+        print("Type Detected: URL 📌")
 
         suspicious_keywords = [
             "login", "verify", "bank", "secure", "update", "now or never", "jackpot"
@@ -126,7 +126,7 @@ def analyze_data(data):
             print("✅ Risk Level: LOW (Likely Safe)")
 
     else:
-        print("📌 Type Detected: TEXT / OTHER")
+        print("Type Detected: TEXT / OTHER 🔍")
         print("✅ Risk Level: LOW")
 
 
@@ -150,10 +150,10 @@ def main():
         elif choice == "2":
             scan_qr()
         elif choice == "3":
-            print("👋 Exiting program. Goodbye!")
+            print("Exiting program. Goodbye! 👋")
             sys.exit()
         else:
-            print("❌ Invalid choice. Please try again.")
+            print("Invalid choice. Please try again. ❌")
 
 
 if __name__ == "__main__":
