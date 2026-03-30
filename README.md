@@ -1,5 +1,3 @@
-# Fundamental-of-AIML-project
-
 # QR Code Analyzer
 
 A simple Python tool that lets you generate QR codes and scan them. It also checks if a scanned URL looks suspicious.
